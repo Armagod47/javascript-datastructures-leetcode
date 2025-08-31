@@ -97,10 +97,22 @@ class LinkedList {
       this.head = this.head.next;
       temp.next = null;
       this.length--;
-      
+
       // For Single Item in LL after decrement
       if(this.length === 0){
          this.tail = null
+      }
+      return temp;
+   }
+
+   // Get Node from Index
+   get(index) {
+      if(index < 0 || index >= this.length){
+         return undefined;
+      }
+      let temp = this.head;
+      for(let i=0; i<index ; i++){
+         temp = temp.next;
       }
       return temp;
    }
