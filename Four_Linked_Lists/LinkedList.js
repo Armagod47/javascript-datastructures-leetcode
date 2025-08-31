@@ -66,7 +66,26 @@ class LinkedList {
 
          return temp;
       }
+   
+   // Unshift : Adds element to first node
+   // 4 to be Unshifted 11 -> 3 -> 23 -> 7 : null
+   unshift(value){
+      const newNode =new Node(value);
+      // if LL is empty
+      if(!this.head){
+         this.head = newNode;
+         this.tail = newNode;
+      }
+      else {
+         newNode.next = this.head;
+         this.head = newNode;
+      }
+
+      this.length++;
+      return this;
+   }
+   
 }
 
-const newLL = new LinkedList(1);
-newLL.push(2);
+const myNewLinkedList = new LinkedList(1);
+myNewLinkedList.push(2);
