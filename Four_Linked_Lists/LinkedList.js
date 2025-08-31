@@ -84,6 +84,26 @@ class LinkedList {
       this.length++;
       return this;
    }
+
+   // Shift : First element to be removed
+   // 11 to be Shifted from 11 -> 3 -> 23 -> 7 : null
+   shift() {
+      // If LL is empty
+      if(this.head === null){
+         return undefined;
+      }
+
+      let temp = this.head;
+      this.head = this.head.next;
+      temp.next = null;
+      this.length--;
+      
+      // For Single Item in LL after decrement
+      if(this.length === 0){
+         this.tail = null
+      }
+      return temp;
+   }
    
 }
 
