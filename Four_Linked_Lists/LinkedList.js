@@ -84,8 +84,59 @@ class LinkedList {
       this.length++;
       return this;
    }
+
+   // Shift : First element to be removed
+   // 11 to be Shifted from 11 -> 3 -> 23 -> 7 : null
+   shift() {
+      // If LL is empty
+      if(this.head === null){
+         return undefined;
+      }
+
+      let temp = this.head;
+      this.head = this.head.next;
+      temp.next = null;
+      this.length--;
+
+      // For Single Item in LL after decrement
+      if(this.length === 0){
+         this.tail = null
+      }
+      return temp;
+   }
+
+   // Get Node from Index
+   get(index) {
+      if(index < 0 || index >= this.length){
+         return undefined;
+      }
+      let temp = this.head;
+      for(let i=0; i<index ; i++){
+         temp = temp.next;
+      }
+      return temp;
+   }
+
+   // Set New Value in Particular Index
+   set(index, value) {
+      let temp = this.get(index);  // this will get the current item at that location
+      if(temp){
+         temp.value = value;
+         return true;
+      }
+      return false;
+   }
    
 }
 
-const myNewLinkedList = new LinkedList(1);
-myNewLinkedList.push(2);
+// Default LinkedList : 11 -> 3 -> 23 -> 7
+const myNewLinkedList = new LinkedList(11);
+myNewLinkedList.push(3);
+myNewLinkedList.push(23);
+myNewLinkedList.push(7);
+
+// myNewLinkedList.pop();
+// myNewLinkedList.unshift(11);
+// myNewLinkedList.shift();
+//myNewLinkedList.get(2);
+//myNewLinkedList.set(2,100);
